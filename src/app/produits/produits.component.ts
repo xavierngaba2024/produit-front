@@ -15,4 +15,8 @@ export class ProduitsComponent {
   ngOnInit(): void {
     this.produits = this.produitService.listeProduits();
   }
+
+  supprimerProduit(p: Produit) {
+    console.log(p);
+  }
 }
