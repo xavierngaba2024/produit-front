@@ -17,6 +17,9 @@ export class ProduitsComponent {
   }
 
   supprimerProduit(p: Produit) {
-    console.log(p);
+    //console.log(p);
+    let conf = confirm("Etes-vous sûr ?");
+    if (conf)
+      this.produitService.supprimerProduit(p);
   }
 }
