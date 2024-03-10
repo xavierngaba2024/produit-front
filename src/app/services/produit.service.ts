@@ -9,10 +9,10 @@ export class ProduitService {
 
   produits: Produit[]; //un tableau de Produit
   produit! : Produit;
-  categories: Categorie[];
+  /* categories: Categorie[]; */
   constructor() {
-    this.categories = [{ idCat: 1, nomCat: "PC" },
-                       { idCat: 2, nomCat: "Imprimante" }];
+    /* this.categories = [{ idCat: 1, nomCat: "PC" },
+                       { idCat: 2, nomCat: "Imprimante" }]; */
 
     this.produits = [
       {
@@ -73,12 +73,12 @@ export class ProduitService {
     this.trierProduits();
   }
 
-  listeCategories(): Categorie[] {
+  /* listeCategories(): Categorie[] {
     return this.categories;
   }
 
   consulterCategorie(id: number): Categorie {
     return this.categories.find(cat => cat.idCat == id)!;
-  }
+  } */
 
 }

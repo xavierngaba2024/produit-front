@@ -19,12 +19,12 @@ export class AddProduitComponent {
               private router : Router) {}
 
   ngOnInit(): void {
-    this.categories = this.produitService.listeCategories();
+    /* this.categories = this.produitService.listeCategories(); */
   }
 
   addProduit() {
     //console.log(this.newProduit);
-    this.newCategorie = this.produitService.consulterCategorie(this.newIdCat);
+    /* this.newCategorie = this.produitService.consulterCategorie(this.newIdCat); */
     this.newProduit.categorie = this.newCategorie;
     this.produitService.ajouterProduit(this.newProduit);
     this.router.navigate(['produits']);
