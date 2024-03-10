@@ -19,13 +19,13 @@ export class UpdateProduitComponent {
   
   ngOnInit() {
     /* this.categories = this.produitService.listeCategories(); */
-    this.currentProduit = this.produitService.consulterProduit(this.activatedRoute.snapshot.params['id']);
+    /* this.currentProduit = this.produitService.consulterProduit(this.activatedRoute.snapshot.params['id']); */
     this.updatedCatId = this.currentProduit.categorie.idCat;
   }
 
   updateProduit() { 
     /* this.currentProduit.categorie = this.produitService.consulterCategorie(this.updatedCatId); */
-    this.produitService.updateProduit(this.currentProduit);
+    /* this.produitService.updateProduit(this.currentProduit); */
     this.router.navigate(["produits"]);
   }
 }

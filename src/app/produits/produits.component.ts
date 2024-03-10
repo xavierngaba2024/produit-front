@@ -13,13 +13,17 @@ export class ProduitsComponent {
   constructor(private produitService: ProduitService) {}
 
   ngOnInit(): void {
-    this.produits = this.produitService.listeProduits();
+    /* this.produits = this.produitService.listeProduits(); */
+    this.produitService.listeProduit().subscribe(prods => {
+      console.log(prods);
+      this.produits = prods;
+    });
   }
 
-  supprimerProduit(p: Produit) {
+  /* supprimerProduit(p: Produit) {
     //console.log(p);
     let conf = confirm("Etes-vous sûr ?");
     if (conf)
       this.produitService.supprimerProduit(p);
-  }
+  } */
 }

@@ -1,20 +1,29 @@
-import { Injectable } from '@angular/core';
+import { ApplicationConfig, Injectable } from '@angular/core';
 import { Produit } from '../model/produit.model';
 import { Categorie } from '../model/categorie.model';
+import { Observable, throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
+
+const httpOptions = { 
+headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProduitService {
 
-  produits: Produit[]; //un tableau de Produit
+  //produits: Produit[]; //un tableau de Produit
   produit! : Produit;
   /* categories: Categorie[]; */
-  constructor() {
+  apiURL: string = 'http://localhost:8080/produits/api';
+  constructor(private http: HttpClient) {
     /* this.categories = [{ idCat: 1, nomCat: "PC" },
                        { idCat: 2, nomCat: "Imprimante" }]; */
 
-    this.produits = [
+    /* this.produits = [
       {
         idProduit: 1, nomProduit: "PC Asus", prixProduit: 3000.600, dateCreation: new Date("01/14/2011"), categorie: { idCat: 1, nomCat: "PC" }
       },
@@ -24,18 +33,19 @@ export class ProduitService {
       {
         idProduit: 3, nomProduit: "Tablette Samsung", prixProduit: 900.123, dateCreation: new Date("02/20/2020"), categorie: { idCat: 1, nomCat: "PC" }
       }
-    ]
+    ] */
 
   }
 
-  listeProduits(): Produit[] {
-    return this.produits;
-  }
-  ajouterProduit(prod: Produit) {
-    this.produits.push(prod);
+  listeProduit(): Observable<Produit[]> {
+    return this.http.get<Produit[]>(this.apiURL);
   }
 
-  supprimerProduit(prod: Produit) {
+  ajouterProduit(prod: Produit): Observable<Produit> {
+    return this.http.post<Produit>(this.apiURL, prod, httpOptions);
+  }
+
+  /* supprimerProduit(prod: Produit) {
     //supprimer le produit prod du tableau produits
     const index = this.produits.indexOf(prod, 0);
     if (index > -1) {
@@ -46,10 +56,10 @@ export class ProduitService {
     if(prod.idProduit === cur.idProduit) {
     this.produits.splice(index, 1);
     }
-    }); */
-  }
+    }); 
+  } */
 
-  consulterProduit(id: number): Produit {
+  /* consulterProduit(id: number): Produit {
     this.produit = this.produits.find(p => p.idProduit == id)!;
     return this.produit;
   }
@@ -71,7 +81,7 @@ export class ProduitService {
     this.supprimerProduit(p);
     this.ajouterProduit(p);
     this.trierProduits();
-  }
+  } */
 
   /* listeCategories(): Categorie[] {
     return this.categories;
