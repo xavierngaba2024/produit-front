@@ -73,4 +73,12 @@ export class ProduitService {
     this.trierProduits();
   }
 
+  listeCategories(): Categorie[] {
+    return this.categories;
+  }
+
+  consulterCategorie(id: number): Categorie {
+    return this.categories.find(cat => cat.idCat == id)!;
+  }
+
 }
