@@ -50,4 +50,10 @@ export class ProduitService {
     return this.produit;
   }
 
+  updateProduit(p: Produit) {
+    // console.log(p);
+    this.supprimerProduit(p);
+    this.ajouterProduit(p);
+  }
+
 }
