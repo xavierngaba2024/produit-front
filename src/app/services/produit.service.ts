@@ -3,10 +3,14 @@ import { Produit } from '../model/produit.model';
 import { Categorie } from '../model/categorie.model';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
-import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-const httpOptions = { 
-headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin':'*',
+    'X-Requested-With': 'XMLHttpRequest'
+  })
 };
 
 
@@ -16,7 +20,7 @@ headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 export class ProduitService {
 
   //produits: Produit[]; //un tableau de Produit
-  produit! : Produit;
+  produit!: Produit;
   /* categories: Categorie[]; */
   apiURL: string = 'http://localhost:8080/produits/api';
   constructor(private http: HttpClient) {

@@ -3,6 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProduitsComponent } from './produits/produits.component';
 import { AddProduitComponent } from './add-produit/add-produit.component';
 import { UpdateProduitComponent } from './update-produit/update-produit.component';
+import { HttpClient, HttpHeaders, provideHttpClient, withFetch } from '@angular/common/http';
+import { provideClientHydration } from '@angular/platform-browser';
+import { provideRouter } from '@angular/router';
 
 const routes: Routes = [
   { path: "produits", component: ProduitsComponent },
@@ -10,6 +13,10 @@ const routes: Routes = [
   { path: "updateProduit/:id", component: UpdateProduitComponent },
   { path: "", redirectTo: "produits", pathMatch: "full" }
 ];
+
+export const appConfig: ApplicationConfig = {
+  providers: [provideHttpClient(withFetch()), provideRouter(routes), provideClientHydration()]
+}
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

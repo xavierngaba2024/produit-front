@@ -22,6 +22,7 @@ export class UpdateProduitComponent {
     /* this.currentProduit = this.produitService.consulterProduit(this.activatedRoute.snapshot.params['id']); */
     this.updatedCatId = this.currentProduit.categorie.idCat;
   }
+  
 
   updateProduit() { 
     /* this.currentProduit.categorie = this.produitService.consulterCategorie(this.updatedCatId); */
